@@ -15,7 +15,7 @@ api_id = os.environ.get("ID", "")
 app = Client("my_bot",api_id=api_id, api_hash=api_hash,bot_token=bot_token)  
 
 # ENVs
-GDTot_Crypt = os.environ.get("CRYPT","b0lDek5LSCt6ZjVRR2EwZnY4T1EvVndqeDRtbCtTWmMwcGNuKy8wYWpDaz0%3D")
+GDTot_Crypt = os.environ.get("CRYPT","COOKIEID")
 Laravel_Session = os.environ.get("Laravel_Session","")
 XSRF_TOKEN = os.environ.get("XSRF_TOKEN","")
 KCRYPT = os.environ.get("KOLOP_CRYPT","")
@@ -33,16 +33,16 @@ def mainthread(cmd,message):
         try:
             url = str(message.text.split(f"{cmd} ")[1])
         except:
-            app.send_message(message.chat.id, f"⚠️ __Invalid format, either__ **reply** __to a__ **link** __or use like this ->__ **{cmd} link**", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, f"⚠️ Invalid Format, either **reply** to a **link** or use like this -> **{cmd} link**", reply_to_message_id=message.id)
             return
 
 
     if cmd == "/dl":
-        msg = app.send_message(message.chat.id, "⚡ __generating...__", reply_to_message_id=message.id)
+        msg = app.send_message(message.chat.id, "⚡ Generating Direct Link...", reply_to_message_id=message.id)
     elif cmd in ["/ol","/ps"]:
-        msg = app.send_message(message.chat.id, "🔎 __this might take some time...__", reply_to_message_id=message.id)
+        msg = app.send_message(message.chat.id, "🔎 This Might Take Some Time Kindly Wait...", reply_to_message_id=message.id)
     else:
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
+        msg = app.send_message(message.chat.id, "🔎 Bypassing...", reply_to_message_id=message.id)
 
 
     # igg games
@@ -72,7 +72,7 @@ def mainthread(cmd,message):
     # katdrive
     elif cmd == "/kd":
         if KATCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **KATDRIVE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, "🚫 You can't use this because **KATDRIVE_CRYPT** ENV not provided", reply_to_message_id=message.id)
             return
         
         print("Entered Link katdrive:",url)
@@ -82,7 +82,7 @@ def mainthread(cmd,message):
     # hubdrive
     elif cmd == "/hd":
         if HCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **HUBDRIVE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, "🚫 You can't use this because **HUBDRIVE_CRYPT** ENV not provided", reply_to_message_id=message.id)
             return
 
         print("Entered Link hubdrive:",url)
@@ -92,7 +92,7 @@ def mainthread(cmd,message):
     # drivefire
     elif cmd == "/df":
         if DCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **DRIVEFIRE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, "🚫 You can't use this because **DRIVEFIRE_CRYPT** ENV not provided", reply_to_message_id=message.id)
             return
 
         print("Entered Link drivefire:",url)
@@ -102,7 +102,7 @@ def mainthread(cmd,message):
     # kolop
     elif cmd == "/ko":
         if KCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **KOLOP_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, "🚫 You can't use this because **KOLOP_CRYPT** ENV not provided", reply_to_message_id=message.id)
             return
 
         print("Entered Link kolop:",url)
@@ -154,7 +154,7 @@ def mainthread(cmd,message):
     # sharer pw
     elif cmd == "/sh":
         if XSRF_TOKEN == "" or Laravel_Session == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **XSRF_TOKEN** __and__ **Laravel_Session** __ENV is not set__", reply_to_message_id=message.id)
+            app.send_message(message.chat.id, "🚫 You can't use this because **XSRF_TOKEN** and **Laravel_Session** ENV not provided", reply_to_message_id=message.id)
             return
 
         print("Entered Link sharer:",url)
@@ -230,47 +230,46 @@ def receive(client: pyrogram.client.Client, message: pyrogram.types.messages_and
 # start command
 @app.on_message(filters.command(["start"]))
 def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    app.send_message(message.chat.id, f"__👋 Hi **{message.from_user.mention}**, i am Link Bypasser Bot, just send me any supported links with proper format and i will you give you results. use /help to veiw supported sites list.__",
-    reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("🌐 Source Code", url="https://github.com/SamirJanaOfficial/Link-Bypasser-Bot")]]), reply_to_message_id=message.id)
+    app.send_message(message.chat.id, f"Heylooo, **{message.from_user.mention}**, Welcome to Shit Bypass Bot👀. Kindly use /help to view supported sites list.",
 
 
 # help command
 @app.on_message(filters.command(["help"]))
 def send_help(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     app.send_message(message.chat.id, "🔗 **Available Sites** \n\n  \
- /dl - __direct download link (/ddllist)__ \n  \
- /af - __adfly__ \n  \
- /gp - __gplinks__ \n  \
- /dp - __droplink__ \n  \
- /lv - __linkvertise__ \n  \
- /rl - __rocklinks__ \n  \
- /gd - __gdrive look-alike (/gdlist)__ \n  \
- /ot - __others (/otlist)__ \n  \
- /ou - __ouo__ \n  \
- /gt - __gdtot__ \n  \
- /sh - __sharer__ \n  \
- /ps - __psa__ \n  \
- /st - __shorte__ \n  \
- /pi - __pixl__ \n  \
- /gy - __gyanilinks__ \n  \
- /sg - __shortingly__ \n  \
- /su - __shareus__ \n  \
- /fc - __filecrypt__ \n  \
- /ko - __kolop__ \n  \
- /df - __drivefire__ \n  \
- /hd - __hubdrive__ \n  \
- /kd - __katdrive__ \n  \
- /sc - __script links__ \n  \
- /ol - __olamovies__ \n  \
- /ig - __igg games__ \n\n\
-__reply to the link with command or use format /xx link__",
+ /dl - direct download link (/ddllist) \n  \
+ /af - adfly \n  \
+ /gp - gplinks \n  \
+ /dp - droplink \n  \
+ /lv - linkvertise \n  \
+ /rl - rocklinks \n  \
+ /gd - gdrive look-alike (/gdlist) \n  \
+ /ot - others (/otlist) \n  \
+ /ou - ouo \n  \
+ /gt - gdtot \n  \
+ /sh - sharer \n  \
+ /ps - psa \n  \
+ /st - shorte \n  \
+ /pi - pixl \n  \
+ /gy - gyanilinks \n  \
+ /sg - shortingly \n  \
+ /su - shareus \n  \
+ /fc - filecrypt \n  \
+ /ko - kolop \n  \
+ /df - drivefire \n  \
+ /hd - hubdrive \n  \
+ /kd - katdrive \n  \
+ /sc - script links \n  \
+ /ol - olamovies \n  \
+ /ig - igg games \n\n\
+Reply to the link with command or use this format /xx link",
 reply_to_message_id=message.id)
 
 
 # gd list
 @app.on_message(filters.command(['gdlist']))
 def gdlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    list = """__- appdrive.in \n\
+    list = """- appdrive.info \n\
 - driveapp.in \n\
 - drivehub.in \n\
 - gdflix.pro \n\
@@ -279,14 +278,14 @@ def gdlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
 - drivelinks.in \n\
 - driveace.in \n\
 - drivepro.in \n\
-          __"""
+          """
     app.send_message(message.chat.id, list, reply_to_message_id=message.id)
 
 
 # others list
 @app.on_message(filters.command(['otlist']))
 def otlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    list="""__- exe.io/exey.io \n\
+    list="""- exe.io/exey.io \n\
 - sub2unlock.net/sub2unlock.com \n\
 - rekonise.com \n\
 - letsboost.net \n\
@@ -301,14 +300,14 @@ def otlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
 - shrto.ml \n\
 - t.co \n\
 - tinyurl.com
-    __"""
+    """
     app.send_message(message.chat.id, list, reply_to_message_id=message.id)    
 
 
 # ddl list
 @app.on_message(filters.command(['ddllist']))
 def ddllis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    list="""__- disk.yandex.com \n\
+    list="""- disk.yandex.com \n\
 - mediafire.com \n\
 - uptobox.com \n\
 - osdn.net \n\
@@ -334,7 +333,7 @@ def ddllis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_
 - megaup.net \n\
 - fembed.net, fembed.com, femax20.com, fcdn.stream, feurl.com, layarkacaxxi.icu, naniplay.nanime.in, naniplay.nanime.biz, naniplay.com, mm9842.com \n\
 - sbembed.com, watchsb.com, streamsb.net, sbplay.org
-    __"""
+    """
     app.send_message(message.chat.id, list, reply_to_message_id=message.id)     
 
 
@@ -342,7 +341,7 @@ def ddllis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_
 @app.on_message(filters.text)
 def short(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     if message.text[0] == "/":
-        app.send_message(message.chat.id, "__⏩ see /help__", reply_to_message_id=message.id)
+        app.send_message(message.chat.id, "⏩ see /help", reply_to_message_id=message.id)
 
 
 # server loop

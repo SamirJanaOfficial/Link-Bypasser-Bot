@@ -51,3 +51,9 @@ sc - Script Links
 ol - OlaMovies
 ig - IGG Games
 ```
+
+### Credits
+1. [Samir Jana](https://github.com/SamirJanaOfficial) <i> For Handling and making it more compact. </i>
+2. [Yukki Senpai](https://github.com/xcscxr) <i> For making various scripts publicly on his Profile </i>
+3. [Bipin](https://github.com/bipinkrish) <i> For gathering all scripts into one </i>
+4. [Miss Emily](https://github.com/missemily2022) <i> For formatting the Code and adding more Scripts via Personal API </i>
