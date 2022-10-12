@@ -923,6 +923,7 @@ def adfly(url):
 
 ##############################################################################################        
 # gplinks
+# they moved to recaptcha v2, so don't think it'll work now. finger crossed
 
 def gplinks(url: str):
     client = cloudscraper.create_scraper(allow_brotli=False)
